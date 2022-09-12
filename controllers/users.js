@@ -19,3 +19,19 @@ export const getUser = (req, res) => {
     const user = users.find((user) => user.id === id);
     res.send(user)
 }
+
+export const deleteUser = (req, res) => {
+    const { id } = req.params;
+    users = users.filter((user) => user.id !== id);
+    res.send(`User with id ${id} deleted`);
+}
+
+export const updateUser = (req, res) => {
+    const { id } = req.params;
+    const { firstName, lastName, Age} = req.body;
+    const user = users.find((user) => user.id === id);
+    if (firstName) user.firstName = firstName
+    if (lastName) user.lastName = lastName
+    if (Age) user.Age = Age
+    res.send(`User with id ${id} updated successfull`)
+}
