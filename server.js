@@ -12,4 +12,9 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
     res.send('Hello there node');
 });
+
+app.get('*', (req, res) => {
+    res.send('Sorry, you are trying to access a route that doesnt exist');
+});
+
 app.listen(5000, () => console.log('server is running'));
